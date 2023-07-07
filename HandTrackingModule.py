@@ -46,7 +46,7 @@ class handDetector():
                 lmList.append([id, cx, cy])
                 # if id == 4:
                 if draw:
-                    cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+                    cv2.circle(img, (cx, cy), 7, (135, 206, 235), cv2.FILLED)
 
         return lmList
 
@@ -62,7 +62,7 @@ def main():
         # Membaca setiap img (frame) dari webcam
         success, img = cap.read()
         img = detector.findHands(img)
-        lmList = detector.findPosition(img)
+        lmList = detector.findPosition(img, draw=False) # note: draw=True jika ingin tampilkan node tambahan
         if len(lmList) != 0:
             print(lmList[4])
 
