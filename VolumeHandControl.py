@@ -32,7 +32,7 @@ volRange = volume.GetVolumeRange()
 minVol = volRange[0]
 maxVol = volRange[1]
 vol = 0
-volBar = 180
+volBar = 170
 volPer = 0
 
 while True:
@@ -58,12 +58,12 @@ while True:
         length = math.hypot(x2-x1, y2-y1)
         # print(length) 
 
-        # hand range 50 - 180
+        # hand range 50 - 170
         # volume range: -45 - 0
         # convert hand range to volume range
-        vol = np.interp(length, [50, 180], [minVol, maxVol])
-        volBar = np.interp(length, [50, 180], [400, 150])
-        volPer = np.interp(length, [50, 180], [0, 100])
+        vol = np.interp(length, [50, 170], [minVol, maxVol])
+        volBar = np.interp(length, [50, 170], [300, 150])
+        volPer = np.interp(length, [50, 170], [0, 100])
         print(int(length), vol)
         volume.SetMasterVolumeLevel(vol, None)
 
@@ -71,8 +71,8 @@ while True:
         if length<50:
             cv2.circle(img, (cx,cy), 11, (0,255,0), cv2.FILLED) 
 
-    cv2.rectangle(img, (50,180), (85,180), (255,0,0), 3)
-    cv2.rectangle(img, (50,int(volBar)), (85,180), (255,0,0), cv2.FILLED)
+    cv2.rectangle(img, (50,170), (85,300), (255,0,0), 3)
+    cv2.rectangle(img, (50,int(volBar)), (85,300), (255,0,0), cv2.FILLED)
     cv2.putText(img, f': {int(volPer)} %', (40,450), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 3)
 
     cTime = time.time()
